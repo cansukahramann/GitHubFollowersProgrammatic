@@ -7,7 +7,7 @@
 
 import UIKit
 
-fileprivate var containerView: UIView!
+private var containerView: UIView!
 
 extension UIViewController {
     func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
