@@ -90,7 +90,7 @@ class FollowerListVC: UIViewController {
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: error.rawValue, buttonTitle: "Ok")
             }
-
+            
         }
     }
     
@@ -113,7 +113,30 @@ class FollowerListVC: UIViewController {
     }
     
     @objc func addButtonTapped() {
-        print("add button tapped")
+        showLoadingView()
+        
+        NetworkManager.shared.getUser(for: username) { [weak self] result in
+            guard let self else { return }
+            self.dismissLoadingView()
+            
+            switch result {
+            case .success(let user):
+                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                
+                PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+                    guard let self else { return }
+                    
+                    guard let error = error else {
+                        self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully favorited this user🎉.", buttonTitle: "Hooray!")
+                        return
+                    }
+                    self.presentGFAlertOnMainThread(title: "Something went wrong.", message: error.rawValue, buttonTitle: "Ok")
+                }
+                
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something went wrong.", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
 }
 
