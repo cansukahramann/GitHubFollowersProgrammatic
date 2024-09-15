@@ -110,7 +110,7 @@ class UserInfoVC: GFDataLoadingVC {
         childVC.didMove(toParent: self)
     }
     
-    @objc func dismissVC() {
+    @objc func dismissVC() {
         dismiss(animated: true)
     }
 }
