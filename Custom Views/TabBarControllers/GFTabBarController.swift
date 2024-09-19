@@ -31,12 +31,4 @@ class GFTabBarController: UITabBarController {
         
         return UINavigationController(rootViewController: favoriteListVC)
     }
-//    
-//    func createTabbar() -> UITabBarController {
-//        let tabbar = UITabBarController()
-//        tabbar.tabBar.backgroundColor = .systemBackground
-//        tabbar.tabBar.isTranslucent = false
-//        
-//        return tabbar
-//    }
 }

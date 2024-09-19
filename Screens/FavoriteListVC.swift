@@ -22,6 +22,7 @@ class FavoriteListVC: GFDataLoadingVC {
         super.viewWillAppear(animated)
         getFavorites()
     }
+
     
     func configureViewController() {
         view.backgroundColor = .systemBackground

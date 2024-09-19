@@ -40,3 +40,7 @@ class GFButton: UIButton {
     }
     
 }
+
+#Preview {
+    return GFButton(backgroundColor: .red, title: "Test Button", systemImageName: "heart")
+}

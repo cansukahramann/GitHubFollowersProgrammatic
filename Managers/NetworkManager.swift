@@ -32,9 +32,7 @@ class NetworkManager {
         }
         
         do {
-            
             return try decoder.decode([Follower].self, from: data)
-            
         } catch {
             throw GFError.invalidData
         }
